@@ -1,3 +1,3 @@
 package com.betbull.echo.main.model
 
-class ResponseObject(var itemList: List<ResponseItem>)
+class ResponseObject(var data: List<ResponseItem>)

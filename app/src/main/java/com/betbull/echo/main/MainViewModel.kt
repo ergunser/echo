@@ -1,5 +1,6 @@
 package com.betbull.echo.main
 
+import androidx.lifecycle.MutableLiveData
 import com.betbull.echo.base.viewmodel.BaseViewModel
 import com.betbull.echo.main.model.Api
 import com.betbull.echo.main.model.ResponseObject
@@ -11,6 +12,8 @@ class MainViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: Api
+
+    val list = MutableLiveData<MutableList<ListItemViewHolder>>()
 
     init {
         fetchItemList()
@@ -34,7 +37,14 @@ class MainViewModel : BaseViewModel() {
     }
 
     private fun handleResponse(responseObject: ResponseObject?) {
-        //FIXME handle response
+
+        val list = mutableListOf<ListItemViewHolder>()
+
+        responseObject?.data?.map {
+            ListItemViewModel(it.name)
+        }?.mapTo(list) { ListItemViewHolder(it) }
+
+        this.list.value = list
     }
 
     private fun handleError() {
