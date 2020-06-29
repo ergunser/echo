@@ -1,4 +1,4 @@
-package com.betbull.echo.model
+package com.betbull.echo.main.model
 
 import android.database.Observable
 import retrofit2.http.GET

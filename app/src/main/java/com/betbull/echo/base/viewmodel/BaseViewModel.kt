@@ -1,7 +1,7 @@
 package com.betbull.echo.base.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.betbull.echo.MainViewModel
+import com.betbull.echo.main.MainViewModel
 import com.betbull.echo.base.network.NetworkModule
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

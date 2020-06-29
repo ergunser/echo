@@ -1,3 +1,3 @@
-package com.betbull.echo.model
+package com.betbull.echo.main.model
 
 class ResponseItem(var id: Int,var name: String)
