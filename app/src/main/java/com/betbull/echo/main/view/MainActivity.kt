@@ -1,4 +1,4 @@
-package com.betbull.echo.main
+package com.betbull.echo.main.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.betbull.echo.R
 import com.betbull.echo.databinding.ActivityMainBinding
+import com.betbull.echo.main.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

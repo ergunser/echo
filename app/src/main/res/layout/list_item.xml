@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.betbull.echo.main.ListItemViewModel" />
+            type="com.betbull.echo.main.viewmodel.ListItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

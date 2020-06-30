@@ -1,23 +1,39 @@
 package com.betbull.echo.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.betbull.echo.base.viewmodel.BaseViewModel
 import com.betbull.echo.main.model.Api
 import com.betbull.echo.main.model.ResponseObject
+import com.betbull.echo.main.model.SocketRepository
+import com.betbull.echo.main.view.ListItemViewHolder
+import com.betbull.echo.main.viewmodel.ListItemViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+
 
 class MainViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: Api
 
+    private val repository = SocketRepository() // FIXME use dagger
+
     val list = MutableLiveData<MutableList<ListItemViewHolder>>()
     val progressBarVisible = MutableLiveData<Boolean>().apply { value = true }
 
     init {
         fetchItemList()
+        subscribeToSocket()
+
+        repository.sendMessage("hello") // FIXME connect this to edittext
+    }
+
+    private fun subscribeToSocket() {
+        repository.messageObservable.subscribe {
+            Log.i("erguns", "observed: $it")
+        }.autoDispose()
     }
 
     private fun fetchItemList() {

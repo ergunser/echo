@@ -1,4 +1,4 @@
-package com.betbull.echo.main
+package com.betbull.echo.main.viewmodel
 
 import com.betbull.echo.base.viewmodel.RecyclerItemViewModel
 
