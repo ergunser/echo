@@ -14,6 +14,7 @@ class MainViewModel : BaseViewModel() {
     lateinit var api: Api
 
     val list = MutableLiveData<MutableList<ListItemViewHolder>>()
+    val progressBarVisible = MutableLiveData<Boolean>().apply { value = true }
 
     init {
         fetchItemList()
@@ -45,9 +46,13 @@ class MainViewModel : BaseViewModel() {
         }?.mapTo(list) { ListItemViewHolder(it) }
 
         this.list.value = list
+
+        progressBarVisible.value = false
     }
 
     private fun handleError() {
+        progressBarVisible.value = false
+
         //FIXME handle Error
     }
 
