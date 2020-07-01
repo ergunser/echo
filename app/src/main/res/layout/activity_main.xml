@@ -19,12 +19,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/send"
+            android:onClick="@{() -> viewModel.onClickSendButton()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@={viewModel.editTextField}"
             android:layout_marginRight="@dimen/space_x_small"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="@id/buttonSend"

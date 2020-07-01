@@ -1,6 +1,7 @@
 package com.betbull.echo.main
 
 import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.betbull.echo.base.viewmodel.BaseViewModel
 import com.betbull.echo.main.model.Api
@@ -22,12 +23,17 @@ class MainViewModel : BaseViewModel() {
 
     val list = MutableLiveData<MutableList<ListItemViewHolder>>()
     val progressBarVisible = MutableLiveData<Boolean>().apply { value = true }
+    val editTextField: ObservableField<String> = ObservableField()
 
     init {
         fetchItemList()
         subscribeToSocket()
 
         repository.sendMessage("hello") // FIXME connect this to edittext
+    }
+
+    fun onClickSendButton() {
+        //FIXME send edittextField to socket
     }
 
     private fun subscribeToSocket() {
