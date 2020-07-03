@@ -1,5 +1,6 @@
 package com.betbull.echo.base.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betbull.echo.main.MainViewModel
 import io.reactivex.disposables.CompositeDisposable
@@ -12,6 +13,7 @@ abstract class BaseViewModel : ViewModel() {
         .build()
 
     private val disposeBag = CompositeDisposable()
+    val errorMessage = MutableLiveData<String>()
 
     open val toolbarViewModel: ToolbarViewModel? = null
 
