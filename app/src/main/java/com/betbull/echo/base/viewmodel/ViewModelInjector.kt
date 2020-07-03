@@ -15,7 +15,5 @@ interface ViewModelInjector {
     @Component.Builder
     interface Builder {
         fun build(): ViewModelInjector
-
-        fun networkModule(networkModule: NetworkModule): Builder
     }
 }
