@@ -1,7 +1,7 @@
 package com.betbull.echo.base.network
 
 import com.betbull.echo.base.Constants.BASE_URL
-import com.betbull.echo.model.Api
+import com.betbull.echo.main.model.Api
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
