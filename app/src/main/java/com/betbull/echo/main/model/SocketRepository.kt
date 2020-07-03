@@ -1,6 +1,5 @@
 package com.betbull.echo.main.model
 
-import android.util.Log
 import com.betbull.echo.base.Constants.SOCKET_URL
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -29,7 +28,6 @@ class SocketRepository : WebSocketListener() {
     override fun onMessage(webSocket: WebSocket, text: String) {
         super.onMessage(webSocket, text)
         messageSubject.onNext(text)
-        Log.i("erguns", "onMessage $text")
     }
 
     fun sendMessage(text: String) {

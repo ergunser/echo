@@ -15,6 +15,9 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
+const val LOGIN_MESSAGE = "LOGIN"
+const val LOGOUT_MESSAGE = "LOGOUT"
+
 class MainViewModel : BaseViewModel() {
 
     @Inject
@@ -46,6 +49,20 @@ class MainViewModel : BaseViewModel() {
 
     private fun handleSocketMessage(text: String?) {
 
+        when (text) {
+            LOGIN_MESSAGE -> {
+                loginUser()
+            }
+            LOGOUT_MESSAGE -> {
+                logoutUser()
+            }
+            else -> {
+                updateListItemIfValid(text)
+            }
+        }
+    }
+
+    private fun updateListItemIfValid(text: String?) {
         val pair = convertMessageToPair(text)
 
         if (pair == null) {
@@ -56,6 +73,17 @@ class MainViewModel : BaseViewModel() {
         list.value?.find { it.viewModel.item.id == pair.first }?.viewModel?.item?.name = pair.second
 
         list.value = list.value // FIXME find an elegant solution
+
+    }
+
+    private fun logoutUser() {
+        //FIXME logout user
+
+
+    }
+
+    private fun loginUser() {
+        //FIXME login user
     }
 
     private fun convertMessageToPair(text: String?): Pair<Int, String>? {
