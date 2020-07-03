@@ -13,6 +13,8 @@ abstract class BaseViewModel : ViewModel() {
 
     private val disposeBag = CompositeDisposable()
 
+    open val toolbarViewModel: ToolbarViewModel? = null
+
     init {
         inject()
     }
