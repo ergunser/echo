@@ -8,8 +8,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import javax.inject.Inject
 
-class SocketRepository : WebSocketListener() {
+class SocketRepository @Inject constructor(): WebSocketListener() {
 
     private var client: OkHttpClient? = null
     private var webSocket: WebSocket? = null
