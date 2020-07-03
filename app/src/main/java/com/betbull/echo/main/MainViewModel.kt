@@ -2,9 +2,12 @@ package com.betbull.echo.main
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
+import com.betbull.echo.R
 import com.betbull.echo.base.Constants.MESSAGE_SEPARATOR
 import com.betbull.echo.base.extensions.orFalse
+import com.betbull.echo.base.util.ResourceUtil
 import com.betbull.echo.base.viewmodel.BaseViewModel
+import com.betbull.echo.base.viewmodel.ToolbarViewModel
 import com.betbull.echo.main.model.Api
 import com.betbull.echo.main.model.ResponseObject
 import com.betbull.echo.main.model.SocketRepository
@@ -28,6 +31,8 @@ class MainViewModel : BaseViewModel() {
     val list = MutableLiveData<MutableList<ListItemViewHolder>>()
     val progressBarVisible = MutableLiveData<Boolean>().apply { value = true }
     val editTextField: ObservableField<String> = ObservableField()
+
+    override val toolbarViewModel: ToolbarViewModel? = ToolbarViewModel()
 
     init {
         fetchItemList()
@@ -77,13 +82,11 @@ class MainViewModel : BaseViewModel() {
     }
 
     private fun logoutUser() {
-        //FIXME logout user
-
-
+        toolbarViewModel?.title?.value = ResourceUtil.getString(R.string.app_name)
     }
 
     private fun loginUser() {
-        //FIXME login user
+        toolbarViewModel?.title?.value = ResourceUtil.getString(R.string.welcome_message)
     }
 
     private fun convertMessageToPair(text: String?): Pair<Int, String>? {
