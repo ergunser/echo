@@ -27,7 +27,7 @@
                 android:padding="@dimen/space_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.name}"
+                android:text="@{viewModel.item.name}"
                 android:textAppearance="@style/BetbullTextAppearance.Name"
                 tools:text="Betbull"
                 app:layout_constraintTop_toTopOf="parent"
