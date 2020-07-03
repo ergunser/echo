@@ -1,13 +1,18 @@
 package com.betbull.echo.main
 
 import android.annotation.SuppressLint
+import com.betbull.echo.R
 import com.betbull.echo.base.Constants
 import com.betbull.echo.base.extensions.orFalse
+import com.betbull.echo.base.util.ResourceUtil
 import com.betbull.echo.main.model.ResponseItem
 import com.betbull.echo.main.model.SocketRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+
+const val LOGIN_MESSAGE = "LOGIN"
+const val LOGOUT_MESSAGE = "LOGOUT"
 
 class SocketInteract @Inject constructor() {
 
@@ -54,7 +59,7 @@ class SocketInteract @Inject constructor() {
         val pair = convertMessageToPair(text)
 
         if (pair == null) {
-            //FIXME show invalid input & socket error
+            listener?.onError(ResourceUtil.getString(R.string.error_invalid_input))
             return
         }
 

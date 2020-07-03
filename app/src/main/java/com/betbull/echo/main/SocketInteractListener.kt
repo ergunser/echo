@@ -9,4 +9,6 @@ interface SocketInteractListener {
     fun onUserLogout()
 
     fun onMockListUpdated(mockList: MutableList<ResponseItem>?)
+
+    fun onError(errorMessage: String)
 }

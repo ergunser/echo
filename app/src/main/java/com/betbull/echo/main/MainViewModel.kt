@@ -15,10 +15,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-
-const val LOGIN_MESSAGE = "LOGIN"
-const val LOGOUT_MESSAGE = "LOGOUT"
-
 class MainViewModel : BaseViewModel(), SocketInteractListener {
 
     @Inject
@@ -54,6 +50,10 @@ class MainViewModel : BaseViewModel(), SocketInteractListener {
         updateAdapterList(mockList)
     }
 
+    override fun onError(errorMessage: String) {
+        this.errorMessage.value = errorMessage
+    }
+
     private fun fetchItemList() {
 
         api.fetchItemsByName()
@@ -84,7 +84,7 @@ class MainViewModel : BaseViewModel(), SocketInteractListener {
     private fun handleError() {
         progressBarVisible.value = false
 
-        //FIXME handle Error
+        errorMessage.value = ResourceUtil.getString(R.string.error_mock_message)
     }
 
     private fun updateAdapterList(responseList: List<ResponseItem>?) {
